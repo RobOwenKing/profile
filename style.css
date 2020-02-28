@@ -7,7 +7,7 @@
 
 body {
   background-image: linear-gradient(#EEE, #FFF);
-  font-family: 'Open Sans', 'Sans Serif';
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
 }
 
@@ -51,13 +51,13 @@ h1{
   margin-bottom: 0;
   font-size: 32px;
   color: #042D43;
-  font-family: 'Poppins', 'Sans Serif';
+  font-family: 'Poppins', sans-serif;
 }
 
 h2 {
   font-size: 20px;
   color: #042D43;
-  font-family: 'Poppins', 'Sans Serif';
+  font-family: 'Poppins', sans-serif;
 }
 
 h3 {
@@ -77,14 +77,25 @@ li {
   display: inline;
 }
 
-.i-link {
+.i-small-padded {
   font-size: 24px;
   color: #3A506B;
   margin: 8px;
   opacity: 0.8;
 }
 
-.i-link:hover {
+.i-small-padded:hover {
+  opacity: 1;
+}
+
+.i-small {
+  font-size: 24px;
+  color: #3A506B;
+  margin-top: 8px;
+  opacity: 0.8;
+}
+
+.i-small:hover {
   opacity: 1;
 }
 
@@ -109,5 +120,3 @@ li {
 .btn-orange:hover {
   opacity: 1;
 }
-
-
