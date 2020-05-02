@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pascal's Christmas Tree</title>
+
+	<style>
+		body {
+			text-align: center;
+			font-family: Helvetica, serif;
+		}
+		.grey {color: #222222;}
+		.green {color: #004400;}
+		.red {color: #BB0000;}
+		.points {text-align: left;}
+		h2 {font-variant: small-caps;}
+		.nobr {display: inline;}
+		input {width: 3em;}
+	</style>
+	
+
+</head>	
+
+<body>
+	<h2><span class="grey">Pascal's Christmas Tree</span></h2>
+
+	<h4 id="tree">1</h4>
+	
+	<h4 class="nobr">Rows:&nbsp;&#8201;</h4>
+	<input type="number" value="20" id="userRows">
+	<br />
+	<h4 class="nobr">Prune:&nbsp;</h4>
+	<input type="number" value="4" id="userPrune">
+	<br />
+	<h4 class="nobr">Factor:</h4>
+	<input type="number" value="3" id="userFactor">
+	<br />
+	<button onclick="update()">Go!</button> 
+	
+	<h4 id="triangle">1</h4>
+	
+	<script src="pascalsChristmasTree.js"></script>
+	<!--<script src="pascalsChristmasTriangle.js"></script>-->
+</body>
+</html> 

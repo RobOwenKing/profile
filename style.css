@@ -8,7 +8,7 @@
 body {
   background-image: linear-gradient(#EEE, #FFF);
   font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 div {
@@ -22,10 +22,32 @@ footer {
 
 .card {
   opacity: 0.8;
+  transition: opacity 0.2s;
 }
 
 .card:hover {
   opacity: 1;
+}
+
+.card-1-2 {
+  display: flex;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+  text-decoration: none;
+  color: inherit
+}
+
+.card-1-2:hover {
+  opacity: 1;
+}
+
+.card-1-2:hover h2 {
+  text-decoration: underline;
+}
+
+.card-1-2 div {
+  text-align: left;
+  margin-left: 16px;
 }
 
 .line-break {
@@ -33,6 +55,10 @@ footer {
   height: 1px;
   width: 80%;
   background-image: linear-gradient(to right, transparent, rgb(48,49,51), transparent);
+}
+
+.navbar-line {
+  margin-top: 10px;
 }
 
 .img-circle {
@@ -64,8 +90,12 @@ h3 {
   font-size: 16px;
 }
 
-a {
+.no-dec {
   text-decoration: none;
+}
+
+.link-dec {
+  color: #042D43;
 }
 
 ul {
@@ -77,25 +107,14 @@ li {
   display: inline;
 }
 
-.i-small-padded {
-  font-size: 24px;
+.i-link {
+  font-size: 32px;
   color: #3A506B;
-  margin: 8px;
+  margin: 4px;
   opacity: 0.8;
 }
 
-.i-small-padded:hover {
-  opacity: 1;
-}
-
-.i-small {
-  font-size: 24px;
-  color: #3A506B;
-  margin-top: 8px;
-  opacity: 0.8;
-}
-
-.i-small:hover {
+.i-link:hover {
   opacity: 1;
 }
 
@@ -108,15 +127,56 @@ li {
   color: #3A506B;
 }
 
-.btn-orange {
+.btn {
   padding: 8px 16px;
-  background-color: #F57E2A;
+  /*background-color: #F57E2A;*/
   color: white;
   display: inline-block;
   border-radius: 3px;
+  margin: auto 4px;
+  cursor: pointer;
   opacity: 0.8;
 }
 
-.btn-orange:hover {
+a.btn {
+  text-decoration: none;
+}
+
+.btn:hover {
   opacity: 1;
+  text-decoration: underline;
+}
+
+.btn-orange {
+  background-color: #F57E2A;
+}
+
+.btn-blue {
+  background-color: #042D43;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Poppins', sans-serif;
+}
+
+.navbar h2 {
+  margin: 0px 8px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar-right a {
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+.navbar a:hover {
+  opacity: 1;
+  text-decoration: underline;
 }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+
+		<title>Conway's Game of Life</title>
+	</head>
+	<body>
+    <div class="container">
+      <h1>Conway's Game of Life</h1>
+      <p>Below is my implementation of the cellular automaton Conway's Game of Life, created to practice HTML5 canvas and in memory of John Horton Conway, who sadly died on 11th April 2020.</p>
+      <p>For more details on the "game" itself, see <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank" class="link-dec">its Wikipedia article</a>. For more on the specific bells and whistles I've added to this implementation, see below.</p>
+  		<canvas></canvas>
+  		<div id="iterate">Iterate</div>
+  		<input type="range" min="1" max="100" id="speed">
+  		<div id="autoplay">Autoplay</div>
+  		<h3>Patterns</h3>
+      <div id="clear">Clear grid</div>
+  		<div id="random">Random pattern</div>
+  		<script src="game_of_life.js"></script>
+    </div>
+	</body>
+</html>
