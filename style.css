@@ -155,18 +155,18 @@ a.btn {
   background-color: #042D43;
 }
 
-.navbar {
+nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-family: 'Poppins', sans-serif;
 }
 
-.navbar h2 {
+nav h2 {
   margin: 0px 8px;
 }
 
-.navbar a {
+nav a {
   text-decoration: none;
   color: inherit;
 }
@@ -176,7 +176,7 @@ a.btn {
   opacity: 0.8;
 }
 
-.navbar a:hover {
+nav a:hover {
   opacity: 1;
   text-decoration: underline;
 }
