@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="sudoku.css">
+  <!--meta name="viewport" content="width=device-width, initial-scale=1"-->
+
+  <title>Sudoku ??? · Rob Owen King</title>
+</head>
+
+<body>
+    <nav>
+      <h2><a href="../../index.html">Rob Owen King</a></h2>
+      <div class="navbar-right">
+        <a href="../index.html">About Me</a>
+        ·
+        <a href="portfolio.html">Portfolio</a>
+      </div>
+    </nav>
+
+    <div class="line-break navbar-line"></div>
+
+    <div class="container">
+      <h1>Sudoku Solver</h1>
+    <ul>
+      <li id="enter" class="btn btn-blue btn-active">Enter mode</li>
+      <li id="solve" class="btn btn-blue">Solve mode</li>
+    </ul>
+
+    <table id="sudoku">
+      <tbody>
+      </tbody>
+    </table>
+
+    <div class="buttons">
+      <p id="brute-force">Brute force ></p>
+      <p id="candidates">Generate candidates ></p>
+    </div>
+  </div>
+  <script src="sudoku.js"></script>
+</body>
+</html>

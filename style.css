@@ -150,10 +150,16 @@ a.btn {
 
 .btn-orange {
   background-color: #F57E2A;
+  border: solid 2px #F57E2A;
 }
 
 .btn-blue {
   background-color: #042D43;
+  border: solid 2px #042D43;
+}
+
+.btn-active {
+  border-style: inset;
 }
 
 nav {
