@@ -14,9 +14,9 @@
     <nav>
       <h2><a href="../../index.html">Rob Owen King</a></h2>
       <div class="navbar-right">
-        <a href="../index.html">About Me</a>
+        <a href="../../index.html">About Me</a>
         ·
-        <a href="portfolio.html">Portfolio</a>
+        <a href="../portfolio.html">Portfolio</a>
       </div>
     </nav>
 
@@ -34,9 +34,17 @@
       </tbody>
     </table>
 
-    <div class="buttons">
-      <p id="brute-force">Brute force ></p>
-      <p id="candidates">Generate candidates ></p>
+    <div class="buttons" id="buttons-enter">
+      <ul>
+        <li class="valid">Check grid valid</li>
+      </ul>
+    </div>
+
+    <div class="buttons" id="buttons-solve">
+      <ul>
+        <li id="brute-force" class="btn btn-orange">Brute force</li>
+        <!--li id="candidates">Generate candidates</li-->
+      </ul>
     </div>
   </div>
   <script src="sudoku.js"></script>
