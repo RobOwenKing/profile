@@ -123,8 +123,8 @@ canvas.addEventListener('click', (event) => {
       case 'diehard':
         pattern = diehard;
         break;
-      case 'lipka':
-        pattern = lipka;
+      case 'lidka':
+        pattern = lidka;
         break;
       case 'bunnies':
         pattern = bunnies;
