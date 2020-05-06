@@ -29,7 +29,7 @@ footer {
   opacity: 1;
 }
 
-.card-1-2 {
+.card-img-txt {
   display: flex;
   opacity: 0.9;
   transition: opacity 0.2s;
@@ -37,21 +37,26 @@ footer {
   color: inherit
 }
 
-.card-1-2:hover {
+.card-img-txt:hover {
   opacity: 1;
 }
 
-.card-1-2:hover h2 {
+.card-img-txt:hover h2 {
   text-decoration: underline;
 }
 
-.card-1-2 div {
+.card-img-txt div {
   text-align: left;
   margin-left: 16px;
 }
 
-.card-1-2 a {
+.card-img-txt a {
   text-decoration: none;
+}
+
+.card-1-2 {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
 }
 
 .line-break {
