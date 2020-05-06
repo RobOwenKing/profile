@@ -74,7 +74,7 @@ startAngleSlider.addEventListener('input', (event) => {
 });
 
 angleIncrementSlider.addEventListener('input', (event) => {
-  angleIncrement = parseInt(angleIncrementSlider.value);
+  angleIncrement = parseFloat(angleIncrementSlider.value);
   drawSpiral();
 });
 
