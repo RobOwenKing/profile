@@ -50,6 +50,10 @@ footer {
   margin-left: 16px;
 }
 
+.card-1-2 a {
+  text-decoration: none;
+}
+
 .line-break {
   margin: 30px auto 20px auto;
   height: 1px;
