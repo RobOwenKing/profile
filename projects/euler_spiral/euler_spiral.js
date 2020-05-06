@@ -13,6 +13,10 @@ const dark = document.getElementById('dark');
 const light = document.getElementById('light');
 let mode = "dark";
 
+const animateButton = document.getElementById('animate');
+let animate = false;
+let counter = 0;
+
 let startX = 200;
 let startY = 200;
 let startAngle = parseInt(startAngleSlider.value);
@@ -34,7 +38,6 @@ const drawSpiral = () => {
   currentAngle = startAngle;
   for (let i = 0; i < numberOfSegments; i++) {
     currentAngle += (angleIncrement * i);
-    console.log(currentAngle);
     ctx.strokeStyle = mode === "dark" ? `hsl(${currentAngle},100%,50%)` : `hsl(${currentAngle},75%,75%)`;
     ctx.beginPath();
     ctx.moveTo(currentX, currentY);
@@ -86,4 +89,29 @@ segmentLengthSlider.addEventListener('input', (event) => {
 numberOfSegmentsSlider.addEventListener('input', (event) => {
   numberOfSegments = parseInt(numberOfSegmentsSlider.value);
   drawSpiral();
+});
+
+const iteration = () => {
+  if (counter === 2) {
+    drawSpiral();
+    counter = 0;
+    angleIncrementSlider.value = parseFloat(angleIncrementSlider.value) + 0.001;
+    angleIncrement = parseFloat(angleIncrementSlider.value);
+  }
+  if (animate === true) {
+    counter += 1;
+    requestAnimationFrame(iteration);
+  }
+}
+
+animateButton.addEventListener('click', (event) => {
+  animate = !animate;
+
+  if (animate === true) {
+    angleIncrement = parseFloat(angleIncrementSlider.value);
+    counter = 1;
+    iteration();
+  }
+
+  animateButton.classList.toggle('btn-active');
 });
