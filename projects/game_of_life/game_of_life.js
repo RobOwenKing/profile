@@ -20,6 +20,7 @@ const random = document.getElementById('random');
 
 let adding = 'dot';
 
+const dotButton = document.getElementById('dot');
 const rPentominoButton = document.getElementById('r-pentomino');
 const bHeptominoButton = document.getElementById('b-heptomino');
 const piHeptominoButton = document.getElementById('pi-heptomino');
@@ -38,7 +39,7 @@ const noahsArkButton = document.getElementById('noahsArk');
 const queenBeeLoopButton = document.getElementById('queenBeeLoop');
 const gliderGunButton = document.getElementById('gliderGun');
 
-const patternButtons = [rPentominoButton, bHeptominoButton, piHeptominoButton, gliderButton, acornButton, diehardButton, lidkaButton, bunniesButton, pentadecathlonButton, lwssButton, mwssButton, hwssButton, loaferButton, copperheadButton, noahsArkButton, queenBeeLoopButton, gliderGunButton];
+const patternButtons = [dotButton, rPentominoButton, bHeptominoButton, piHeptominoButton, gliderButton, acornButton, diehardButton, lidkaButton, bunniesButton, pentadecathlonButton, lwssButton, mwssButton, hwssButton, loaferButton, copperheadButton, noahsArkButton, queenBeeLoopButton, gliderGunButton];
 
 
 const patterns = new Map([
@@ -97,7 +98,6 @@ const renderGrid = (grid) => {
 renderGrid(grid);
 
 canvas.addEventListener('click', (event) => {
-  // console.log(event);
 	const col = Math.floor(event.offsetX / resolution);
 	const row = Math.floor(event.offsetY / resolution);
   let pattern = patterns.get(adding);

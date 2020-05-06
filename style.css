@@ -160,6 +160,7 @@ a.btn {
 
 .btn-active {
   border-style: inset;
+  opacity: 0.9;
 }
 
 nav {
