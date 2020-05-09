@@ -251,3 +251,13 @@ enterButton.addEventListener('click', (event) => {
   enterButton.classList.add('btn-active');
   solveButton.classList.remove('btn-active');
 });
+
+const inputs = document.querySelectorAll('input');
+inputs.forEach(input => {
+  input.addEventListener('focus', (event) => {
+    input.style.backgroundColor = "yellow";
+  });
+  input.addEventListener('blur', (event) => {
+    input.style.backgroundColor = "#FFFFFF";
+  });
+});
