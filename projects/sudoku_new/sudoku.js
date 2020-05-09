@@ -36,7 +36,7 @@ const createSolutionTable = () => {
     solutionTable.insertAdjacentHTML('beforeend', '<tr></tr>');
     const latestRow = document.querySelector('#solution tbody > tr:last-child');
     for (let j = 0; j < 9; j += 1) {
-      latestRow.insertAdjacentHTML('beforeend', '<td></td>');
+      latestRow.insertAdjacentHTML('beforeend', '<td><input type="text" /></td>');
     }
   }
 };
@@ -110,11 +110,11 @@ const updateCellInSolution = (x, y) => {
   // console.log(sudokuArray[y][x]);
 
   // Find the cell in question in the HTML and update its value
-  const cell = solutionTable.childNodes[y + 1].childNodes[x];
+  const cell = solutionTable.childNodes[y + 1].childNodes[x].childNodes[0];
   if (solutionArray[y][x] >= 1 && solutionArray[y][x] <= 9) {
-    cell.innerText = solutionArray[y][x];
+    cell.value = solutionArray[y][x];
   } else {
-    cell.innerText = "";
+    cell.value = "";
   }
 
   // Change the colour of the number in the cell
