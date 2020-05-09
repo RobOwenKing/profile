@@ -16,6 +16,9 @@ td {
   padding: 0;
   height: 40px;
   width: 40px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #FFFFFF;
 }
 td:first-child {
   border-left-color: black;
@@ -29,13 +32,5 @@ input {
   border: 0;
   height: 38px;
   width: 38px;
-}
-input:hover {
-  background: #ffffff;
-}
-#solution td {
-  text-align: center;
-}
-td {
   font-weight: bold;
 }

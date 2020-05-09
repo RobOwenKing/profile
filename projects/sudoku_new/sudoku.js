@@ -4,6 +4,9 @@ const candidatesArray = [];
 const sudokuTable = document.querySelector('#sudoku tbody');
 const solutionTable = document.querySelector('#solution tbody');
 
+const enterButton = document.getElementById('enter');
+const solveButton = document.getElementById('solve');
+
 // Save the state of the grid in an array of arrays for ease of manipulation
 const createSudokuArray = () => {
   for (let i = 0; i < 9; i += 1) {
@@ -192,13 +195,13 @@ btnBruteForce.addEventListener('click', event => {
   // console.log(sudokuArray);
 });
 
-const btnGenerateCandidates = document.getElementById('candidates');
+/*const btnGenerateCandidates = document.getElementById('candidates');
 btnGenerateCandidates.addEventListener('click', event => {
   // console.log(sudokuArray);
   fillCandidatesArray();
   // console.log(solutionArray);
   // console.log(sudokuArray);
-});
+});*/
 
 const moveH = (target) => {
   if (target !== null) {
@@ -233,4 +236,18 @@ document.addEventListener('keyup', (event) => {
   } else if (event.key === "ArrowDown") {
     moveV(currentFocus, false)
   }
+});
+
+solveButton.addEventListener('click', (event) => {
+  sudokuTable.parentElement.hidden = true;
+  solutionTable.parentElement.hidden = false;
+  solveButton.classList.add('btn-active');
+  enterButton.classList.remove('btn-active');
+});
+
+enterButton.addEventListener('click', (event) => {
+  sudokuTable.parentElement.hidden = false;
+  solutionTable.parentElement.hidden = true;
+  enterButton.classList.add('btn-active');
+  solveButton.classList.remove('btn-active');
 });
