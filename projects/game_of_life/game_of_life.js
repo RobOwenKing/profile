@@ -21,6 +21,7 @@ const random = document.getElementById('random');
 let adding = 'dot';
 
 const dotButton = document.getElementById('dot');
+const deleteButton = document.getElementById('delete');
 const rPentominoButton = document.getElementById('r-pentomino');
 const bHeptominoButton = document.getElementById('b-heptomino');
 const piHeptominoButton = document.getElementById('pi-heptomino');
@@ -39,7 +40,7 @@ const noahsArkButton = document.getElementById('noahsArk');
 const queenBeeLoopButton = document.getElementById('queenBeeLoop');
 const gliderGunButton = document.getElementById('gliderGun');
 
-const patternButtons = [dotButton, rPentominoButton, bHeptominoButton, piHeptominoButton, gliderButton, acornButton, diehardButton, lidkaButton, bunniesButton, pentadecathlonButton, lwssButton, mwssButton, hwssButton, loaferButton, copperheadButton, noahsArkButton, queenBeeLoopButton, gliderGunButton];
+const patternButtons = [deleteButton, dotButton, rPentominoButton, bHeptominoButton, piHeptominoButton, gliderButton, acornButton, diehardButton, lidkaButton, bunniesButton, pentadecathlonButton, lwssButton, mwssButton, hwssButton, loaferButton, copperheadButton, noahsArkButton, queenBeeLoopButton, gliderGunButton];
 
 
 const patterns = new Map([
@@ -98,14 +99,18 @@ const renderGrid = (grid) => {
 renderGrid(grid);
 
 canvas.addEventListener('click', (event) => {
-	const col = Math.floor(event.offsetX / resolution);
-	const row = Math.floor(event.offsetY / resolution);
-  let pattern = patterns.get(adding);
+	const col = Math.floor((event.offsetX - 3) / resolution);
+	const row = Math.floor((event.offsetY - 3) / resolution);
+  if (adding === 'delete') {
+    grid[col][row] = '.';
+  } else {
+    let pattern = patterns.get(adding);
 
-  for (let i = 0; i < pattern.length; i++) {
-    const colPlus = col + parseInt(pattern[i][0]);
-    const rowPlus = row + parseInt(pattern[i][1]);
-    grid[colPlus][rowPlus] = '0';
+    for (let i = 0; i < pattern.length; i++) {
+      const colPlus = col + parseInt(pattern[i][0]);
+      const rowPlus = row + parseInt(pattern[i][1]);
+      grid[colPlus][rowPlus] = '0';
+    }
   }
 
 	renderGrid(grid);
