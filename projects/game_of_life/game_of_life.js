@@ -6,7 +6,7 @@ const light = document.getElementById('light');
 let mode = "dark";
 
 let speedButton = document.getElementById('speed');
-let speed = 101;
+let speed = 101 - speedButton.value;
 const autoplayButton = document.getElementById('autoplay');
 let counter = 0;
 let autoplay = false;
