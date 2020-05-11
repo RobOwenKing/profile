@@ -25,31 +25,36 @@
   <div class="container">
     <h1>Sudoku Solver</h1>
     <ul>
-      <li id="enter" class="btn btn-blue btn-active">Enter mode</li>
-      <li id="solve" class="btn btn-blue">Solve mode</li>
+      <li id="btn-enter" class="btn btn-blue btn-active">Enter mode</li>
+      <li id="btn-solve" class="btn btn-blue">Solve mode</li>
     </ul>
 
-    <table id="sudoku">
-      <tbody>
-      </tbody>
-    </table>
-
-    <table id="solution" hidden>
-      <tbody>
-      </tbody>
-    </table>
-
-    <div class="buttons" id="buttons-enter">
-      <ul>
-        <li class="valid">Check grid valid</li>
-      </ul>
+    <div class="enter-mode">
+      <table id="sudoku">
+        <tbody>
+        </tbody>
+      </table>
+      <br>
+      <div>
+        <ul>
+          <li id="clear-grid" class="btn btn-orange">Clear grid</li>
+          <li id="brute-force" class="btn btn-orange">Brute force</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="buttons" id="buttons-solve">
-      <ul>
-        <li id="brute-force" class="btn btn-orange">Brute force</li>
-        <!--li id="candidates">Generate candidates</li-->
-      </ul>
+    <div class="solve-mode" hidden>
+      <table id="solution">
+        <tbody>
+        </tbody>
+      </table>
+      <br>
+      <div>
+        <ul>
+          <li class="valid" class="btn btn-orange">Check grid valid</li>
+          <!--li id="candidates">Generate candidates</li-->
+        </ul>
+      </div>
     </div>
   </div>
   <script src="sudoku.js"></script>

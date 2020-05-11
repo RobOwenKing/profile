@@ -1,11 +1,15 @@
-const sudokuArray = [];
+let sudokuArray = [];
 let solutionArray = [];
 const candidatesArray = [];
 const sudokuTable = document.querySelector('#sudoku tbody');
 const solutionTable = document.querySelector('#solution tbody');
 
-const enterButton = document.getElementById('enter');
-const solveButton = document.getElementById('solve');
+const enterButton = document.getElementById('btn-enter');
+const solveButton = document.getElementById('btn-solve');
+const enterMode = document.querySelector('.enter-mode');
+const solveMode = document.querySelector('.solve-mode');
+
+const clearButton = document.getElementById('clear-grid');
 
 // Save the state of the grid in an array of arrays for ease of manipulation
 const createSudokuArray = () => {
@@ -41,6 +45,10 @@ const createSolutionTable = () => {
   }
 };
 
+createSudokuArray();
+createSudokuTable();
+createSolutionTable();
+
 const fillCandidatesArray = () => {
   for (let i = 0; i < 9; i += 1) {
     const latestRow = [];
@@ -57,7 +65,7 @@ const fillCandidatesArray = () => {
     }
     candidatesArray.push(latestRow);
   }
-  console.log(candidatesArray);
+  // console.log(candidatesArray);
 };
 
 
@@ -120,10 +128,13 @@ const updateCellInSolution = (x, y) => {
   // Change the colour of the number in the cell
   if (solutionArray[y][x] === sudokuArray[y][x]) {
     // Black if given by the user
+    cell.disabled = true;
     cell.style.color = "black";
+    cell.style.backgroundColor = "#FFFFFF";
   } else {
     // Blue if calculated by the algorithm
     cell.style.color = "blue";
+    cell.disabled = false;
   }
   // console.log(solutionTable.childNodes[y + 1].childNodes[x]);
 };
@@ -136,31 +147,6 @@ const updateSolution = () => {
     }
   }
 };
-
-const createTableListeners = () => {
-  sudokuCells.forEach(cell => {
-    cell.addEventListener('blur', (event) => {
-      const y = cell.closest("tr").rowIndex;
-      const x = cell.closest("td").cellIndex;
-      const num = parseInt(cell.value, 10);
-      digitRegex = /^[1-9]$/;
-      if (digitRegex.test(cell.value)) {
-        // checkValid(num, x, y);
-        sudokuArray[y][x] = num;
-      } else {
-        sudokuArray[y][x] = 0;
-      }
-      updateCellInSolution(x, y);
-    });
-  });
-};
-
-createSudokuArray();
-createSudokuTable();
-createSolutionTable();
-
-const sudokuCells = document.querySelectorAll('input');
-createTableListeners();
 
 // Algorithm to solve by brute force. As yucky a method as the code.
 const solveBruteForce = () => {
@@ -191,6 +177,7 @@ btnBruteForce.addEventListener('click', event => {
   solutionArray = JSON.parse(JSON.stringify(sudokuArray));
   solveBruteForce();
   updateSolution();
+  goToSolveMode();
   // console.log(solutionArray);
   // console.log(sudokuArray);
 });
@@ -224,7 +211,7 @@ document.addEventListener('keyup', (event) => {
   const currentFocus = document.activeElement;
   // console.log(currentFocus.parentElement);
   // console.log(event.key == "ArrowRight");
-  console.log(currentFocus);
+  // console.log(currentFocus);
   if (event.key === "ArrowRight") {
     const nextElement = currentFocus.parentElement.nextElementSibling;
     moveH(nextElement);
@@ -238,16 +225,20 @@ document.addEventListener('keyup', (event) => {
   }
 });
 
-solveButton.addEventListener('click', (event) => {
-  sudokuTable.parentElement.hidden = true;
-  solutionTable.parentElement.hidden = false;
+const goToSolveMode = () => {
+  enterMode.hidden = true;
+  solveMode.hidden = false;
   solveButton.classList.add('btn-active');
   enterButton.classList.remove('btn-active');
+};
+
+solveButton.addEventListener('click', (event) => {
+  goToSolveMode();
 });
 
 enterButton.addEventListener('click', (event) => {
-  sudokuTable.parentElement.hidden = false;
-  solutionTable.parentElement.hidden = true;
+  enterMode.hidden = false;
+  solveMode.hidden = true;
   enterButton.classList.add('btn-active');
   solveButton.classList.remove('btn-active');
 });
@@ -259,5 +250,49 @@ inputs.forEach(input => {
   });
   input.addEventListener('blur', (event) => {
     input.style.backgroundColor = "#FFFFFF";
+    if (input.closest('table').id === 'sudoku') {
+      const y = input.closest("tr").rowIndex;
+      const x = input.closest("td").cellIndex;
+      const num = parseInt(input.value, 10);
+      digitRegex = /^[1-9]$/;
+      if (digitRegex.test(input.value)) {
+        // checkValid(num, x, y);
+        sudokuArray[y][x] = num;
+      } else {
+        sudokuArray[y][x] = 0;
+      }
+      updateCellInSolution(x, y);
+    }
   });
 });
+
+clearButton.addEventListener('click', (event) => {
+  sudokuArray = [];
+  solutionArray = [];
+  createSudokuArray();
+  inputs.forEach(input => {
+    input.value = '';
+  });
+  updateSolution();
+});
+
+// const createTableListeners = () => {
+//   sudokuCells.forEach(cell => {
+//     cell.addEventListener('blur', (event) => {
+//       const y = cell.closest("tr").rowIndex;
+//       const x = cell.closest("td").cellIndex;
+//       const num = parseInt(cell.value, 10);
+//       digitRegex = /^[1-9]$/;
+//       if (digitRegex.test(cell.value)) {
+//         // checkValid(num, x, y);
+//         sudokuArray[y][x] = num;
+//       } else {
+//         sudokuArray[y][x] = 0;
+//       }
+//       updateCellInSolution(x, y);
+//     });
+//   });
+// };
+
+// const sudokuCells = document.querySelectorAll('input');
+// createTableListeners();

@@ -43,3 +43,7 @@ td:first-child {
 td:nth-child(3n) {
   border-right-color: black;
 }
+
+#solution input {
+  color: blue;
+}
