@@ -198,6 +198,8 @@ clear.addEventListener('click', (event) => {
 light.addEventListener('click', (event) => {
   if (mode === "dark") {
     mode = "light";
+    dark.classList.remove('btn-active');
+    light.classList.add('btn-active');
     renderGrid(grid);
   }
 });
@@ -205,6 +207,8 @@ light.addEventListener('click', (event) => {
 dark.addEventListener('click', (event) => {
   if (mode === "light") {
     mode = "dark";
+    dark.classList.add('btn-active');
+    light.classList.remove('btn-active');
     renderGrid(grid);
   }
 });
