@@ -10,6 +10,8 @@ const enterMode = document.querySelector('.enter-mode');
 const solveMode = document.querySelector('.solve-mode');
 
 const clearButton = document.getElementById('clear-grid');
+const bruteForceButton = document.getElementById('brute-force');
+const validButton = document.getElementById('valid');
 
 // Save the state of the grid in an array of arrays for ease of manipulation
 const createSudokuArray = () => {
@@ -121,21 +123,22 @@ const updateCellInSolution = (x, y) => {
   const cell = solutionTable.childNodes[y + 1].childNodes[x].childNodes[0];
   if (solutionArray[y][x] >= 1 && solutionArray[y][x] <= 9) {
     cell.value = solutionArray[y][x];
+    cell.disabled = true;
   } else {
     cell.value = "";
+    cell.disabled = false;
   }
 
   // Change the colour of the number in the cell
   if (solutionArray[y][x] === sudokuArray[y][x]) {
     // Black if given by the user
-    cell.disabled = true;
     cell.style.color = "black";
-    cell.style.backgroundColor = "#FFFFFF";
   } else {
     // Blue if calculated by the algorithm
     cell.style.color = "blue";
-    cell.disabled = false;
   }
+
+  cell.style.backgroundColor = "#FFFFFF";
   // console.log(solutionTable.childNodes[y + 1].childNodes[x]);
 };
 
@@ -171,8 +174,7 @@ const solveBruteForce = () => {
   return true;
 };
 
-const btnBruteForce = document.getElementById('brute-force');
-btnBruteForce.addEventListener('click', event => {
+bruteForceButton.addEventListener('click', event => {
   // console.log(sudokuArray);
   solutionArray = JSON.parse(JSON.stringify(sudokuArray));
   solveBruteForce();
@@ -250,11 +252,11 @@ inputs.forEach(input => {
   });
   input.addEventListener('blur', (event) => {
     input.style.backgroundColor = "#FFFFFF";
+    const y = input.closest("tr").rowIndex;
+    const x = input.closest("td").cellIndex;
+    const num = parseInt(input.value, 10);
+    digitRegex = /^[1-9]$/;
     if (input.closest('table').id === 'sudoku') {
-      const y = input.closest("tr").rowIndex;
-      const x = input.closest("td").cellIndex;
-      const num = parseInt(input.value, 10);
-      digitRegex = /^[1-9]$/;
       if (digitRegex.test(input.value)) {
         // checkValid(num, x, y);
         sudokuArray[y][x] = num;
@@ -262,6 +264,13 @@ inputs.forEach(input => {
         sudokuArray[y][x] = 0;
       }
       updateCellInSolution(x, y);
+    } else {
+      if (digitRegex.test(input.value)) {
+        // checkValid(num, x, y);
+        solutionArray[y][x] = num;
+      } else {
+        solutionArray[y][x] = 0;
+      }
     }
   });
 });
@@ -275,6 +284,20 @@ clearButton.addEventListener('click', (event) => {
   });
   updateSolution();
 });
+
+validButton.addEventListener('click', (event) => {
+  for (let i = 0; i < 9; i += 1) {
+    for (let j = 0; j < 9; j += 1) {
+      const temp = solutionArray[j][i];
+      solutionArray[j][i] = 0;
+      // console.log(solutionArray[j][i]);
+      if (!checkValid(temp, i, j)) {
+        solutionTable.childNodes[j + 1].childNodes[i].childNodes[0].style.color = 'red';
+      }
+      solutionArray[j][i] = temp;
+    }
+  }
+})
 
 // const createTableListeners = () => {
 //   sudokuCells.forEach(cell => {

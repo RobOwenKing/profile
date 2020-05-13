@@ -92,7 +92,7 @@ numberOfSegmentsSlider.addEventListener('input', (event) => {
 });
 
 const iteration = () => {
-  if (counter === 2) {
+  if (counter === 4) {
     drawSpiral();
     counter = 0;
     angleIncrementSlider.value = parseFloat(angleIncrementSlider.value) + 0.001;
